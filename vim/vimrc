@@ -1,0 +1,405 @@
+" Vundle plugin manager ----------------------------------------
+set nocompatible              " be iMproved, required
+set backspace=eol,start,indent
+"let g:ycm_path_to_python_interpreter = '/Users/h.chen/anaconda3/bin/python3'
+" let g:ycm_path_to_python_interpreter = '/usr/bin/python'
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/vundle
+"call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+call vundle#begin('/home/h.chen/.vim/bundle')
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim', {'name': 'vundle'}
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+" Git plugin not hosted on GitHub
+"Plugins  ---------------------------------------------------
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround', {'name': 'vim-surround'}
+Plugin 'https://github.com/tpope/vim-git.git'
+Plugin 'https://github.com/flazz/vim-colorschemes.git', {'name': 'vim-colorschemes'}
+Plugin 'https://github.com/ervandew/supertab.git'
+Plugin 'https://github.com/vim-latex/vim-latex.git', {'name' : 'vim-latex'}
+Plugin 'https://github.com/MarcWeber/vim-addon-mw-utils.git', {'name' : 'vim-addon-mw-utils'}
+Plugin 'https://github.com/darfink/vim-plist.git', {'name' : 'vim-plist'}
+Plugin 'https://github.com/PyCQA/pyflakes.git', {'name': 'pyflakes'}
+Plugin 'https://github.com/nvie/vim-flake8.git', {'name': 'vim-flake8'}
+Plugin 'https://github.com/mileszs/ack.vim.git', {'name': 'ack'}
+Plugin 'https://github.com/sjl/gundo.vim.git'
+Plugin 'https://github.com/fs111/pydoc.vim.git'
+Plugin 'https://github.com/vim-scripts/pep8.git'
+Plugin 'https://github.com/alfredodeza/pytest.vim.git'
+Plugin 'https://github.com/reinh/vim-makegreen', {'name': 'makegreen'}
+Plugin 'https://github.com/vim-scripts/TaskList.vim.git', {'name': 'tasklist'}
+Plugin 'https://github.com/vim-scripts/The-NERD-tree.git', {'name': 'NerdTree'}
+Plugin 'https://github.com/scrooloose/syntastic.git', {'name': 'syntastic'}
+Plugin 'https://github.com/garbas/vim-snipmate.git', {'name': 'snipmate'}
+Plugin 'https://github.com/Lokaltog/vim-powerline.git', {'name': 'powerline'}
+Plugin 'https://github.com/majutsushi/tagbar.git', {'name': 'tagbar'}
+Plugin 'https://github.com/jlanzarotta/bufexplorer.git', {'name': 'bufexplorer'}
+Plugin 'https://github.com/vim-scripts/winmanager.git', {'name': 'winmanager'}
+Plugin 'https://github.com/scrooloose/nerdcommenter.git', {'name': 'nerdcommenter'}
+Plugin 'https://github.com/cstrap/monaco-font.git', {'name': 'monaco-font'}
+Plugin 'https://github.com/kien/ctrlp.vim.git', {'name': 'ctrlp'}
+Plugin 'https://github.com/kien/rainbow_parentheses.vim.git', {'name': 'rainbow-parentheses'}
+Plugin 'https://github.com/nathanaelkane/vim-indent-guides.git', {'name': 'vim-indent-guides'}
+Plugin 'https://github.com/bronson/vim-trailing-whitespace.git', {'name': 'vim-trailing-whitespace'}
+Plugin 'https://github.com/easymotion/vim-easymotion.git', {'name': 'vim-easymotion'}
+Plugin 'https://github.com/tpope/vim-repeat.git', {'name': 'vim-repeat'}
+Plugin 'https://github.com/SirVer/ultisnips.git', {'name': 'ultisnips'}
+Plugin 'https://github.com/Raimondi/delimitMate.git', {'name': 'delimitMate'}
+Plugin 'https://github.com/godlygeek/tabular.git', {'name': 'tabular'}
+Plugin 'https://github.com/mileszs/ack.vim.git', {'name': 'ack.vim'}
+
+" --------------
+" python plugins
+" jedi-vim for python auto-complete
+Plugin 'https://github.com/davidhalter/jedi-vim.git', {'name': 'jedi.vim'}
+" 缩进线
+Plugin 'https://github.com/Yggdroot/indentLine.git', {'name': 'indentLine'}
+" pep8自动格式化代码
+Plugin 'https://github.com/tell-k/vim-autopep8.git', {'name': 'autopep8.vim'}
+" " All of your Plugins must be added before the following line
+call vundle#end()            " required
+" " To ignore plugin indent changes, instead use:
+filetype plugin on
+
+" --------------------------------------------------------------
+"  bundle 帮助
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+" colors 主题配色 ----------------------------------------------------------
+set background=dark " dark
+"colorscheme solarized
+"colorscheme molokai
+colorscheme sonokai
+" let g:sonokai_termcolors=256
+" let g:sonokai_termtrans=-1
+" let g:sonokai_contrast="normal"
+" let g:sonokai_visibility="normal"
+"colorscheme phd
+" let g:solarized_termcolors=256
+" let g:solarized_termtrans=-1
+" let g:solarized_contrast="normal"
+" let g:solarized_visibility="normal"
+
+" let g:molokai_termcolors=256
+" let g:molokai_termtrans=-1
+" let g:molokai_contrast="normal"
+" let g:molokai_visibility="normal"
+
+" --------------------------------------------------------------
+let mapleader=";"  " 触发
+
+" 显示行号 ----------------------------------------------
+map <F2> :set number<CR>
+set number
+
+
+syntax on                           " syntax highlighing
+filetype on                          " try to detect filetypes
+filetype plugin indent on    " enable loading indent file for filetype
+
+" ;g 恢复文件 ------------------------------------------------------
+map <leader>g :GundoToggle<CR>
+
+"nerdtre 文件夹浏览 --------------------------------------------
+";nt                 打开nerdree窗口，在左侧栏显示
+"nmap <leader>nt :NERDTree<CR>
+au VimEnter * NERDTree " 默认开启文件浏览窗口
+au VimEnter * wincmd w
+nmap <F3> :NERDTree<CR>
+let NERDTreeHighlightCursorline=1
+let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$', '^\.svn$', '^\.hg$' ]
+let g:netrw_home='~/bak'
+"close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | end
+
+" ";tb 打开tagbar窗口 右侧 变量导视图 -------------------------------------
+map <F8> :TagbarToggle<CR>
+au VimEnter * TagbarToggle
+au VimEnter * wincmd w
+au VimEnter * wincmd w
+"map <leader>tb :TagbarToggle<CR>
+let g:tagbar_autofocus = 1
+
+" ";tl 打开Taglist/TxtBrowser窗口，在右侧栏显示 -----------------------
+" "nmap <leader>tl :Tlist<CR><c-l>
+" " :Tlist              调用TagList
+" "let Tlist_Show_One_File        = 1             " 只显示当前文件的tags
+" "let Tlist_Exit_OnlyWindow      = 1             " 如果Taglist窗口是最后一个窗口则退出Vim
+" "let Tlist_Use_Right_Window     = 1             " 在右侧窗口中显示
+" "let Tlist_File_Fold_Auto_Close = 1             " 自动折叠
+" "let Tlist_Sort_Type = "name"                   " 按名排序
+
+
+" ";ff ;fp 文件搜索 ------------------------------------------------------------
+" 打开ctrlp搜索
+let g:ctrlp_map = '<leader>ff'
+let g:ctrlp_cmd = 'CtrlP'
+" 相当于mru功能，show recently opened files
+map <leader>fp :CtrlPMRU<CR>
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux"
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
+    \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz)$',
+    \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
+    \ }
+let g:ctrlp_working_path_mode=0
+let g:ctrlp_match_window_bottom=1
+let g:ctrlp_max_height=15
+let g:ctrlp_match_window_reversed=0
+let g:ctrlp_mruf_max=500
+let g:ctrlp_follow_symlinks=1
+
+
+
+
+
+";cc 注释 --------------------------------------------------------------
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+" Align line-wise comment delimiters flush left instead of following code
+" indentation
+let g:NERDDefaultAlign = 'left'
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+" Add your own custom formats or override the defaults
+" let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+
+
+
+
+" ";td 待完成 -----------------------------------------------------------
+map <leader>td :TaskList<CR>
+
+";bb/bn 对齐 -----------------------------------------------------------
+";bb                 以=号对齐代码 [Tabular插件]
+nmap <leader>bb :Tab /=<CR>
+";bn                 自定义对齐    [Tabular插件]
+nmap <leader>bn :Tab /
+
+"匹配括号高亮 ---------------------------------------------------------
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+let g:rbpt_max = 40
+let g:rbpt_loadcmd_toggle = 0
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+
+
+"winmanager 多窗口浏览 -------------------------------------------------
+map <c-w><c-f> :FirstExplorerWindow<cr>
+map <c-w><c-b> :BottomExplorerWindow<cr>
+map <c-w><c-t> :WMToggle<cr>
+
+"powerline 状态栏 ------------------------------------------------------
+set nocompatible   " Disable vi-compatibility
+set laststatus=2   " Always show the statusline
+set encoding=utf-8 " Necessary to show Unicode glyphs
+" set t_Co=256 " Explicitly tell Vim that the terminal supports 256 colors
+"if want to use fancy,need to add font patch ->
+"" git clone git://gist.github.com/1630581.git ~/.fonts/ttf-dejavu-powerline
+" set guifont=~/.fonts/Meslo\ LG\ M\ DZ\ Regular\ for\ Powerline.otf
+let g:Powerline_symbols = 'fancy'
+let g:Powerline_symbols = 'unicode'
+
+" ";ig 可视化缩进 -----------------------------------------------------------
+let g:indent_guides_enable_on_vim_startup = 0  " 默认关闭
+" let g:indent_guides_guide_size            = 1  " 指定对齐线的尺寸
+" let g:indent_guides_start_level 	  = 1  " 从第二层开始可视化显示缩进
+
+
+";s 一键保存 " -----------------------------------------------------------
+func! SaveFile()
+    exec "w"
+endfunc
+map  <leader>s :call SaveFile()<CR>
+imap <leader>s <ESC>:call SaveFile()<CR>
+vmap <leader>s <ESC>:call SaveFile()<CR>
+" ;q 一键退出
+func! Quit()
+       exec "q"
+endfunc
+map  <leader>q :call Quit()<CR>
+
+
+
+" ";<space> 去掉行末空格 ----------------------------------------------------
+map <leader><space> :FixWhitespace<cr>	" \+space去掉末尾空格
+
+"windows setting ----------------------------------------------------------
+" if g:isGUI      " 使用GUI界面时的设置
+set guioptions+=c        " 使用字符提示框
+set guioptions+=m        " 隐藏菜单栏
+set guioptions+=T        " 隐藏工具栏
+set guioptions+=L        " 隐藏左侧滚动条
+set guioptions+=r        " 隐藏右侧滚动条
+set guioptions+=b        " 隐藏底部滚动条
+set showtabline=0       " 隐藏Tab栏
+set cursorline           " 突出显示当前行
+" endif
+"" 将外部命令 wmctrl 控制窗口最大化的命令行参数封装成一个 vim 的函数
+
+fun! ToggleFullscreen()
+ call system("wmctrl -ir \" . v:windowid . \" -b toggle,fullscreen")
+endf
+map <silent> <F11> :call ToggleFullscreen()<CR>	" 全屏开/关快捷键
+autocmd VimEnter * call ToggleFullscreen()	" 启动 vim 时自动全屏
+
+
+
+
+
+" "syntastic 静态代码分析 ----------------------------------------------------
+" set statusline+=%#warningmsg#
+" "set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_error_symbol = '✗'  "set error or warning signs
+" let g:syntastic_warning_symbol = '⚠'
+" let g:syntastic_check_on_open=1
+" let g:syntastic_enable_highlighting = 0
+" let g:syntastic_python_checker="flake8,pyflakes,pep8,pylint"
+" let g:syntastic_python_checkers=['pyflakes']
+" highlight SyntasticErrorSign guifg=white guibg=black
+" let g:syntastic_cpp_include_dirs = ['/usr/include/']
+" let g:syntastic_cpp_remove_include_errors = 1
+" let g:syntastic_cpp_check_header = 1
+" let g:syntastic_cpp_compiler = 'clang++'
+" let g:syntastic_cpp_compiler_options = '-std=c++11 -stdlib=libstdc++'
+" let g:syntastic_enable_balloons = 1 "whether to show balloons
+
+
+" 自动补全配置 -------------------------------------------------
+set completeopt=longest,menu,preview    "让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif "离开插入模式后自动关闭预览窗口
+inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"    " 回车即选中当前项
+"上下左右键的行为 会显示其他信息
+inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
+inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
+inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
+inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
+
+" latex 支持 ---------------------------------------------------------------
+" REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
+let g:Tex_GotoError=0
+" IMPORTANT: win32 users will need to have 'shellslash' set so that latex
+" can be called correctly.
+set shellslash
+
+" IMPORTANT: grep will sometimes skip displaying the file name if you
+" search in a singe file. This will confuse Latex-Suite. Set your grep
+" program to always generate a file-name.
+set grepprg=grep\ -nH\ $*
+
+" OPTIONAL: This enables automatic indentation as you type.
+filetype indent on
+
+" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
+" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+" The following changes the default filetype back to 'tex':
+let g:tex_flavor='latex'
+
+" "=============================
+" " ctags for reading c/c++ code
+" "for ctags, then it can find the 'tags' file even not in current directory
+" set tags=tags;/
+" "set to auto read when a file is changed from the outside
+" set autoread
+
+" "Have the mouse enabled all the time:
+" "when you need to copy from vim, maybe you have to ':set mouse=' first
+" " set mouse=a
+
+
+"=====================
+" cscope
+if has("cscope")
+    set csprg=/usr/bin/cscope
+    set csto=1
+    set cst
+    set nocsverb
+" add any database in current directory
+    if filereadable("cscope.out")
+        cs add cscope.out
+    endif
+    set csverb
+endif
+
+" --------------------------------------------------------------------------------
+"  新建代码模板
+autocmd bufnewfile *.c 0r ~/.vim/headers/c
+autocmd bufnewfile *.cpp 0r ~/.vim/headers/cpp
+autocmd bufnewfile *.sh 0r ~/.vim/headers/sh
+autocmd bufnewfile *.py 0r ~/.vim/headers/py
+autocmd bufnewfile *.awk 0r ~/.vim/headers/awk
+
+" ------------------------------------------------------------------------------
+" " PYTHON 相关配置
+map <F5> :call PRUN()<CR>
+func! PRUN()
+   exec "w"
+       if &filetype == 'python'
+          exec "!python %"
+       endif
+endfunc"
+"fix error and redundant
+let g:pyflakes_use_quickfix = 0
+" "set tab ----------------------------------------------------------------
+map <leader>ti: IndentLinesToggle<CR>
+"pep8 python代码检查 --------------------------------------------------
+let g:pep8_map='<leader>8'
+set cc=80
+"当前目录查找字符串--------------------------------------------
+map <F2> :Ack<space>
+"tab 补全-------------------------------------------------------
+au FileType python set omnifunc=pythoncomplete#Complete
+let g:SuperTabDefaultCompletionType = "context"
+set completeopt=menuone,longest,preview
+"python 语法高亮 -------------------------------------------------------
+let python_highlight_all = 1
+" 自动括号,引号等补全 -------------------------------------------------
+" for python docstring ",优化输入
+au FileType python let b:delimitMate_nesting_quotes = ['"']
+";pw python 文档查看 -----------------------------------------------------
+let g:pydoc_open_cmd = 'vsplit'
+" 代码折叠 ----------------------------------------------
+" Folding 代码折叠，很有用
+au FileType python set foldmethod=indent | set foldlevel=99
+" 缩进线 ---
+au FileType python set tabstop=4 | set shiftwidth=4 | set softtabstop=4 | set expandtab | set autoindent
+" 格式化代码
+au FileType python nmap <leader>pp :call Autopep8()<CR>
